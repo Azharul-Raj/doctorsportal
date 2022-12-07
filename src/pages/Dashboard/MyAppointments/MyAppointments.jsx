@@ -8,20 +8,12 @@ import Booking from "./Booking";
 
 const MyAppointments = () => {
   const { user } = useContext(authContext);
-  // if (!user?.email) {
-  //     return <h1>Loading..</h1>
-  //   }
     const { data: bookings = [], isLoading } = useQuery({
     
-    queryKey: ["bookings", user?.email],    
-    // queryFn: getRequest('bookings','email',user?.email)
+    queryKey: ["bookings", user?.email],
     queryFn: async () => {
       const res = await axios.get(
         `bookings?email=${user?.email}`
-        //   headers: {
-        //     authorization:`berar ${localStorage.getItem('token')}`
-        //   }
-        // }, 
       );
       return res.data;
     },
