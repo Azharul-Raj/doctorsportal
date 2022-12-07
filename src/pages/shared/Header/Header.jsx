@@ -1,24 +1,38 @@
-import React from "react";
+import React, { useContext } from "react";
 import { Link } from "react-router-dom";
+import { authContext } from "../../../contexts/AuthProvider";
 
 const Header = () => {
+  const { user, logOut } = useContext(authContext);
   const nav = (
     <>
       <li>
         <Link to="/">Home</Link>
       </li>
       <li>
-        <Link to="/">About</Link>
+        {/* <Link to="/">About</Link> */}
       </li>
       <li>
         <Link to="/appointment">Appointment</Link>
       </li>
       <li>
-        <Link to="/">Reviews</Link>
+        {/* <Link to="/">Reviews</Link> */}
       </li>
       <li>
-        <Link to="/">Contact Us</Link>
+        {/* <Link to="/">Contact Us</Link> */}
       </li>
+      {user?.uid ?
+        <>
+          <li>
+            <Link to="/dashboard">Dashboard</Link>
+          </li>
+          <li>
+        <Link to='/login'><button onClick={logOut} className="btn bg-gray-700">Log Out</button></Link>
+      </li>
+        </>
+      : <li>
+        <Link to='/login'><button className="btn bg-gray-700">Log In</button></Link>
+      </li>}
     </>
   );
   return (
@@ -31,7 +45,7 @@ const Header = () => {
               className="h-5 w-5"
               fill="none"
               viewBox="0 0 24 24"
-              stroke="currentColor"
+              stroke="black"
             >
               <path
                 strokeLinecap="round"
@@ -53,6 +67,25 @@ const Header = () => {
       <div className="navbar-center hidden text-black lg:flex">
         <ul className="menu menu-horizontal p-0">{nav}</ul>
       </div>
+      {/* dashboard sidebar toggle */}
+      <div className="dropdown">
+          <label htmlFor="dashboard-drawer" tabIndex={1} className="btn btn-ghost lg:hidden">
+            <svg
+              xmlns="http://www.w3.org/2000/svg"
+              className="h-5 w-5"
+              fill="none"
+              viewBox="0 0 24 24"
+              stroke="black"
+            >
+              <path
+                strokeLinecap="round"
+                strokeLinejoin="round"
+                strokeWidth="2"
+                d="M4 6h16M4 12h8m-8 6h16"
+              />
+            </svg>
+          </label>
+        </div>
     </div>
   );
 };

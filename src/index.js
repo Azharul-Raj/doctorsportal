@@ -1,13 +1,26 @@
-import React from 'react';
-import ReactDOM from 'react-dom/client';
-import './index.css';
-import App from './App';
-import reportWebVitals from './reportWebVitals';
+import React from "react";
+import ReactDOM from "react-dom/client";
+import "./index.css";
+import App from "./App";
+import reportWebVitals from "./reportWebVitals";
+import AuthProvider from "./contexts/AuthProvider";
+import {
+  QueryClient,
+  QueryClientProvider,
+} from "@tanstack/react-query";
+import { Toaster } from "react-hot-toast";
 
-const root = ReactDOM.createRoot(document.getElementById('root'));
+const queryClint = new QueryClient();
+
+const root = ReactDOM.createRoot(document.getElementById("root"));
 root.render(
   <React.StrictMode>
-    <App />
+    <AuthProvider>
+      <QueryClientProvider client={queryClint}>
+        <Toaster/>
+        <App />
+      </QueryClientProvider>
+    </AuthProvider>
   </React.StrictMode>
 );
 

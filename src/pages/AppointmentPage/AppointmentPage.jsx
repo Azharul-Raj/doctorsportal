@@ -1,16 +1,18 @@
 import React, { useState } from 'react';
 import AppointmentCalender from './AppointmentCalender/AppointmentCalender';
-import Modal from './Modal/Modal';
 import ServicesList from './ServicesList/ServicesList';
 
 const AppointmentPage = () => {
-    const [selected, setSelected] = useState(new Date());
-    const [treatment, setTreatment] = useState([]);
+    const fns = () => {
+        console.log('i will be passed');
+    }
+    const [selectedDate, setSelectedDate] = useState(new Date());
+    const [treatment, setTreatment] = useState(null);
     return (
         <>
-            <AppointmentCalender selected={selected} setSelected={setSelected} />
-            <ServicesList selected={selected} setTreatment={setTreatment} />
-            <Modal treatment={ treatment} selected={selected} />
+            <AppointmentCalender selectedDate={selectedDate} setSelectedDate={setSelectedDate} />
+            <ServicesList fns={fns} selectedDate={selectedDate} setTreatment={setTreatment} treatment={treatment} />
+            
         </>
     );
 };
