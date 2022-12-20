@@ -1,5 +1,3 @@
-/* eslint-disable react-hooks/rules-of-hooks */
-//  eslint-disable react-hooks/rules-of-hooks 
 import { useQuery } from "@tanstack/react-query";
 import axios from "axios";
 import React, { useContext } from "react";
@@ -8,8 +6,7 @@ import Booking from "./Booking";
 
 const MyAppointments = () => {
   const { user } = useContext(authContext);
-    const { data: bookings = [], isLoading } = useQuery({
-    
+    const { data: bookings = [], isLoading } = useQuery({    
     queryKey: ["bookings", user?.email],
     queryFn: async () => {
       const res = await axios.get(
