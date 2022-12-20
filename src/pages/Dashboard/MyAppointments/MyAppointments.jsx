@@ -15,7 +15,6 @@ const MyAppointments = () => {
       return res.data;
     },
   });
-  console.log(bookings);
   if (isLoading) {
     return (
       <div className="flex justify-center items-center">
