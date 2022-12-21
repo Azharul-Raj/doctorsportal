@@ -9,7 +9,7 @@ import { authContext } from "./contexts/AuthProvider";
 const router = routers;
 
 axios.defaults.baseURL =
-  'http://localhost:3001/';
+  'https://doctorsportal-server.vercel.app';
     
 function App() {
   const { user } = useContext(authContext);
