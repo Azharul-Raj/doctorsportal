@@ -1,15 +1,17 @@
 import React from 'react';
 import chair from '../../../assets/images/chair.png'
 import Button from '../../../components/Button';
+import MediumSpinner from '../../../components/MediumSpinner';
 
 const Banner = () => {
     return (
-        <div className="relative">
+      <div className="relative">
         <img
           src={chair}
           className="absolute inset-0 object-cover w-full h-full"
           alt=""
-        />
+          />
+          <MediumSpinner/>
         <div className="relative bg-white bg-opacity-[.9]">
           <div className="px-4 py-20 mx-auto sm:max-w-xl md:max-w-full lg:max-w-screen-xl md:px-24 lg:px-8 lg:py-52">
             <div className="flex flex-col-reverse items-center justify-between xl:flex-row">
